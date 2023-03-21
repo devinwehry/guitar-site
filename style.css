@@ -1,16 +1,33 @@
 /* import fonts */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 :root {
-  --fs-h1: clamp(2.25rem, 5vw, 5rem);
-  --fs-h2: clamp(2rem, 4.25vw, 4rem);
-  --fs-h3: clamp(1.5rem, 2.75vw, 3.25rem);
+  /*36 to 70 px*/
+
+  --fs-h1: clamp(2.25rem, calc(1.51rem + 3.7vw), 4.38rem);
+  /* 23 to 36 */
+  --fs-h2: clamp(1.44rem, calc(1.15rem + 1.41vw), 2.25rem);
+  /* 18 to 24 */
+  --fs-h3: clamp(1.13rem, calc(0.99rem + 0.65vw), 1.5rem);
+  /* 17 to 23 */
+  --fs-h4: clamp(1.06rem, calc(0.93rem + 0.65vw), 1.44rem);
+  /* 14 to 18 */
+  --fs-h5: clamp(0.88rem, calc(0.79rem + 0.43vw), 1.13rem);
+
+  --text-xxs: 13px;
+  --text-xs: 14px;
+  --text-sm: 15px;
+  --text: clamp(0.94rem, calc(0.92rem + 0.11vw), 1rem);
+  --button--input: 16px;
+
   /* add a pirmary accent color */
-  --primary: rgb(12, 117, 222);
-  --secondary: rgb(9, 92, 175);
+  --primary: #ce1609;
+  --secondary: #5abbb5;
+  --black: #000000;
+  --white: #ffffff;
   /* create two border-radius variables, one for button & one for images */
-  --br-img: 3px;
-  --br-button: 4px;
+  --br-img: 8px;
+  --br-button: 8px;
 }
 
 /* reset box-sizing to border-box */
@@ -27,16 +44,20 @@ html {
 
 /* remove body margins, use imported font, set font-size to 15px */
 body {
+  font-size: var(--text);
+  font-weight: 400;
+  line-height: 1.5;
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 15px;
+  background-color: var(--white);
 }
 
 /* reduce line-height on larger headings */
 h1,
 h2,
 h3 {
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 /* remove margins & padding from headings, lists, paragraphs */
@@ -66,9 +87,47 @@ a {
     width: min(80rem, 100% - 6rem);
   }
 }
+.button {
+  display: inline-block;
+  color: white;
+  font-size: var(--button--input);
+  text-transform: uppercase;
+  border: solid 2px var(--primary);
+  border-radius: var(--br-button);
+  padding: 19px 37px;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: background-color 0.2s ease;
+}
+.button:hover,
+.button:focus {
+  background-color: var(--primary);
+}
 
+h1 {
+  font-size: var(--fs-h1);
+}
+h2 {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+}
+.subheading {
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  text-transform: uppercase;
+}
 /* --------------------------- */
 /* Accessibility */
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  padding: 0;
+  border: 0;
+  margin: -1;
+  white-space: nowrap;
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+}
 /* --------------------------- */
 
 /* skip to content link */
@@ -91,5 +150,239 @@ a {
 }
 
 /* --------------------------- */
-/* Typography */
+/* Header */
+
+header {
+  color: white;
+  background-image: url("images/bg/intro-guitar.jpg");
+  background-size: cover;
+}
+#top-nav {
+  border-bottom: solid 1px #3b3d3d;
+}
+#top-nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 10px;
+}
+
+#top-nav img {
+  width: 17px;
+}
+.logo {
+  font-size: var(--fs-h4);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--primary);
+}
+.socials,
+.call-anytime {
+  display: flex;
+  align-items: center;
+}
+
+.socials {
+  gap: 14px;
+}
+.call-anytime {
+  gap: 10px;
+  text-transform: uppercase;
+  font-size: var(--text-xxs);
+  border: solid 1px #3b3d3d;
+  padding: 10px;
+  border-radius: var(--br-button);
+}
+#top-nav .call-anytime img {
+  width: 12px;
+}
 /* --------------------------- */
+#bottom-nav {
+  padding-block: 14px;
+}
+.primary-nav ul {
+  list-style: none;
+  display: none;
+  gap: 40px;
+  justify-content: center;
+}
+@media (min-width: 46rem) {
+  .primary-nav ul {
+    display: flex;
+  }
+}
+
+.primary-nav a {
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  font-size: var(--text-xs);
+  transition: color 0.2s ease;
+}
+
+.primary-nav a:hover,
+.primary-nav a:focus {
+  color: var(--primary);
+}
+#intro {
+  padding-block: 140px;
+}
+#intro h1 {
+  padding-block: 10px 40px;
+}
+
+/* Guitar Brands */
+
+#guitar-brands {
+  background-color: #f0f0f0;
+}
+
+#guitar-brands img {
+  width: 40%;
+  max-width: 140px;
+}
+#guitar-brands .container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding-block: 40px;
+  justify-content: center;
+  gap: 30px 40px;
+}
+@media (min-width: 46rem) {
+  #guitar-brands img {
+    width: 100%;
+    max-width: 150px;
+  }
+  #guitar-brands .container {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 60px;
+    align-items: center;
+  }
+}
+
+/* About */
+#about img,
+#testimonials img {
+  width: 100%;
+}
+#about ul {
+  display: flex;
+  gap: 20px 60px;
+  text-transform: uppercase;
+  flex-direction: column;
+}
+
+#about ul img {
+  width: 30px;
+}
+#about li {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  opacity: 0.5;
+}
+.subtitle {
+  color: var(--primary);
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: var(--text-xs);
+  padding-bottom: 10px;
+}
+.subtitle + h2 {
+  color: var(--black);
+}
+
+#about p:not(.subtitle),
+#testimonials p:not(.subtitle) {
+  color: #4d4d4d;
+
+  padding-block: 30px;
+}
+
+#about .container {
+  padding-block: 90px;
+  display: grid;
+  gap: 60px;
+}
+
+/* The Guitars */
+
+#the-guitars {
+  background-color: var(--primary);
+
+  color: var(--white);
+}
+#the-guitars p {
+  padding-top: 20px;
+  max-width: 900px;
+}
+#the-guitars h2 {
+  text-transform: uppercase;
+}
+
+#the-guitars .container {
+  position: relative;
+  padding-block: 44px;
+}
+#the-guitars .container::after {
+  position: absolute;
+  content: "";
+  top: -12px;
+  right: 0;
+  background-color: white;
+  background-image: url(images/icons/star.svg);
+  background-repeat: repeat-x;
+  background-size: 30px;
+  height: 40px;
+  width: 170px;
+  border-radius: var(--br-button);
+  border-left: solid white 10px;
+  border-right: solid white 10px;
+}
+
+#testimonials .container {
+  padding-block: 90px;
+  display: grid;
+  gap: 60px;
+}
+
+#testimonials .container div {
+  background-image: url(images/bg/gray-guitar.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+@media (min-width: 46rem) {
+  #about ul {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 56rem) {
+  #about .container,
+  #testimonials .container {
+    grid-template-columns: minmax(0, 30%) minmax(0, 70%);
+  }
+  #testimonials .container img {
+    order: -1;
+  }
+}
+@media (min-width: 68rem) {
+  #about .container,
+  #testimonials .container {
+    grid-template-columns: minmax(0, 50%) minmax(0, 50%);
+    align-items: center;
+  }
+
+  #testimonials .container {
+    padding-block: 60px;
+  }
+  #testimonials .container img {
+    order: unset;
+  }
+  #testimonials .container div {
+    padding-block: 60px;
+  }
+}
+/* Footer */
